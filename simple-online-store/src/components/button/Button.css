@@ -1,0 +1,17 @@
+.btn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #85685A; /* cor padrão para botões normais */
+  color: white;
+}
+
+.btn-icon {
+  padding: 4px;              /* menor padding só pro ícone */
+  background-color: transparent; /* fundo transparente */
+  border: none;               /* sem borda */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

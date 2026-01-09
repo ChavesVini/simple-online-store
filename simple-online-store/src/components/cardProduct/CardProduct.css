@@ -1,0 +1,16 @@
+.product-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover; 
+  border-radius: 8px;
+}
+
+.card-product {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ECF8D4;
+  color: #0D0502;
+}

@@ -1,0 +1,34 @@
+.container-card-product {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  padding: 20px;
+  word-break: break-all;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.cart-button {
+  position: fixed;
+  top: 2vh;
+  right: 2vw;
+}
+
+.header-product {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ECF8D4;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 70%;
+}
+
+.products {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}

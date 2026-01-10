@@ -5,7 +5,7 @@ import "./CartButton.css";
 function CartButton() {
   return (
     <Button variant="icon">
-      <img src={cartIcon} alt="Add to cart" />
+      <img src={cartIcon} className="cart-icon" />
     </Button>
   );
 }

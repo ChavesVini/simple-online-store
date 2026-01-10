@@ -1,8 +1,11 @@
-import ProductsPage from "./pages/ProductsPage";
+import { Routes, Route } from "react-router-dom";
+import ProductsPage from "./pages/productsPage/ProductsPage";
 
 function App() {
   return (
-    <ProductsPage />
+    <Routes>
+      <Route path="/" element={<ProductsPage />} />
+    </Routes>
   );
 }
 

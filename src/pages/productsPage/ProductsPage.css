@@ -1,12 +1,8 @@
 .container-card-product {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  margin: auto;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
-  word-break: break-all;
-  border-radius: 8px;
   font-family: Arial, sans-serif;
 }
 
@@ -17,18 +13,18 @@
 }
 
 .header-product {
+  width: 100%;
   font-size: 2.5rem;
   font-weight: bold;
   color: #ECF8D4;
   text-align: center;
-  position: relative;
-  width: 100%;
-  height: 70%;
+  margin-bottom: 24px;
 }
 
 .products {
+  width: 100%;
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }

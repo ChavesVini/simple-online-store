@@ -9,9 +9,15 @@
 }
 
 .modal {
-  background: #fff;
+  background: #ECF8D4;
   padding: 24px;
   border-radius: 8px;
-  min-width: 300px;
-  max-width: 500px;
+  width: 70vw;
+  height: 70vh;
+  text-align: center;
+  color: #0D0502;
+}
+
+.close-button {
+  text-align: right;
 }

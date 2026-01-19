@@ -23,6 +23,7 @@ function CardProduct({ image, nameProduct, description, value, onSelect }: CardP
       </p>
       <Button 
         title="Select"
+        backgroundColor="#0D0502"
         onClick={() => console.log("clicou")}
       />
     </div>

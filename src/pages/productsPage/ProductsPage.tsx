@@ -64,7 +64,7 @@ function ProductsPage() {
             nameProduct={product.name}
             description={product.description}
             value={product.value}
-            onSelect={() => setSelectedProduct(product)} // 👈
+            onSelect={() => setSelectedProduct(product)}
           />
         ))}
       </div>

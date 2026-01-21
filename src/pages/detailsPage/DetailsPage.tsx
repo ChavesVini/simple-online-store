@@ -29,18 +29,26 @@ function DetailsPage({ product, onClose }: DetailsPageProps) {
   return (
     <div className="overlay">
       <div className="modal">
-        <div className="close-button">
+        <div className="modal-header">
           <Button backgroundColor="#0D0502" onClick={onClose}>✕</Button>
         </div>
-        <h2>{product.id}</h2>
-        <p>{product.name}</p>
-        <img src={product.image} alt={product.name} className="product-image" />
-        <p>{product.description}</p>
-        <strong>${product.value}.00</strong>
-        <p> Quantity </p>
-        <Button onClick={decrement} backgroundColor="transparent" color="#0D0502">-</Button>
-        {count}
-        <Button onClick={increment} backgroundColor="transparent" color="#0D0502">+</Button>
+
+        <div className="modal-body">
+          <h2>Id: {product.id}</h2>
+          <p>Name: {product.name}</p>
+          <img src={product.image} alt={product.name} className="product-image" />
+          <p>Description: Lorem ipsum dolor sit amet...</p>
+          <p>Value: ${product.value}.00</p>
+        </div>
+
+        <div className="modal-footer">
+          <p>Quantity</p>
+          <div className="counter">
+            <Button onClick={decrement} backgroundColor="transparent" color="#0D0502">-</Button>
+            <span>{count}</span>
+            <Button onClick={increment} backgroundColor="transparent" color="#0D0502">+</Button>
+          </div>
+        </div>
       </div>
     </div>
   );

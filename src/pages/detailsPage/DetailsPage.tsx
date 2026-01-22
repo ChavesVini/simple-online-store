@@ -10,10 +10,11 @@ interface DetailsPageProps {
     description: string;
     value: number;
   };
-  onClose: () => void;
+  closeModal: () => void;
+  onAddToCart: (quantity: number) => void;
 }
 
-function DetailsPage({ product, onClose }: DetailsPageProps) {
+function DetailsPage({ product, closeModal, onAddToCart }: DetailsPageProps) {
   const [count, setCount] = useState(0);
 
   const increment = () => {
@@ -26,11 +27,16 @@ function DetailsPage({ product, onClose }: DetailsPageProps) {
     }
   };
 
+  const registerNumberOfItems = () => {
+    onAddToCart(count);
+    closeModal();
+  };
+
   return (
     <div className="overlay">
       <div className="modal">
         <div className="modal-header">
-          <Button backgroundColor="#0D0502" onClick={onClose}>✕</Button>
+          <Button backgroundColor="#0D0502" onClick={closeModal}>✕</Button>
         </div>
 
         <div className="modal-body">
@@ -47,6 +53,10 @@ function DetailsPage({ product, onClose }: DetailsPageProps) {
             <Button onClick={decrement} backgroundColor="transparent" color="#0D0502">-</Button>
             <span>{count}</span>
             <Button onClick={increment} backgroundColor="transparent" color="#0D0502">+</Button>
+          </div>
+          <div className="actions-buttons">
+            <Button onClick={closeModal} backgroundColor="#85685A" color="#ECF8D4"> See More Products </Button>
+            <Button onClick={registerNumberOfItems} backgroundColor="#85685A" color="#ECF8D4"> Add to Cart </Button>
           </div>
         </div>
       </div>

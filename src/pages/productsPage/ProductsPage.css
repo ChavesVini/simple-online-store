@@ -24,7 +24,14 @@
 .products {
   width: 100%;
   display: flex;
-  gap: 16px;
+  gap: 1.1vw;
   flex-wrap: wrap;
   justify-content: flex-start;
+}
+
+.header-cart-items {
+  width: 100%;
+  display: flex;
+  gap: 0.5vw;
+  justify-content: flex-end;
 }

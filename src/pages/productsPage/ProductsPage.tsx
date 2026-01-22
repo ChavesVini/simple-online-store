@@ -3,6 +3,7 @@ import "./ProductsPage.css";
 import cartIcon from "../../assets/cart-full.png";
 import DetailsPage from "../detailsPage/DetailsPage";
 import { useState } from "react";
+import CartButton from "../../components/cartButton/CartButton";
 
 const products = [
   {
@@ -51,9 +52,24 @@ const products = [
 
 function ProductsPage() {
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+  const [cartItems, setCartItems] = useState<number>(
+    Number(localStorage.getItem("cart")) || 0
+  );
+
+  const handleAddToCart = (quantity: number) => {
+    setCartItems(prev => {
+      const total = prev + quantity;
+      localStorage.setItem("cart", total.toString());
+      return total;
+    });
+  };
 
   return (
     <div className="container-card-product">
+      <div className="header-cart-items">
+        <p> {cartItems ? cartItems : 0} {cartItems === 1 ? "item" : "items"} </p>
+        <CartButton/>
+      </div>
       <p className="header-product">Products</p>
 
       <div className="products">
@@ -72,7 +88,8 @@ function ProductsPage() {
       {selectedProduct && (
         <DetailsPage
           product={selectedProduct}
-          onClose={() => setSelectedProduct(null)}
+          closeModal={() => setSelectedProduct(null)}
+          onAddToCart={handleAddToCart}
         />
       )}
     </div>

@@ -55,15 +55,19 @@ function DetailsPage({ product, closeModal, onAddToCart }: DetailsPageProps) {
         </div>
 
         <div className="modal-footer">
-          <p>Quantity</p>
-          <div className="counter">
-            <Button onClick={decrement} backgroundColor="transparent" color="#0D0502">-</Button>
-            <span>{count}</span>
-            <Button onClick={increment} backgroundColor="transparent" color="#0D0502">+</Button>
-          </div>
-          <div className="actions-buttons">
-            <Button onClick={closeModal} backgroundColor="#85685A" color="#ECF8D4"> See More Products </Button>
-            <Button onClick={registerNumberOfItems} backgroundColor="#85685A" color="#ECF8D4"> Add to Cart </Button>
+          <div className="footer-wrapper">
+            <div className="counter-wrapper">
+              <p>Quantity</p>
+              <div className="counter">
+                <Button onClick={decrement} backgroundColor="transparent" color="#0D0502">-</Button>
+                <span>{count}</span>
+                <Button onClick={increment} backgroundColor="transparent" color="#0D0502">+</Button>
+              </div>
+            </div>
+            <div className="actions-buttons">
+              <Button onClick={closeModal} backgroundColor="#85685A" color="#ECF8D4"> See More Products </Button>
+              <Button onClick={registerNumberOfItems} backgroundColor="#85685A" color="#ECF8D4"> Add to Cart </Button>
+            </div>
           </div>
         </div>
       </div>

@@ -2,15 +2,10 @@ import { useState } from "react";
 import { Button } from "../../components/button/Button";
 import "./DetailsPage.css";
 import { toast } from 'react-toastify';
+import type { Product } from "../productsPage/ProductsPage";
 
 interface DetailsPageProps {
-  product: {
-    id: number;
-    image: string;
-    name: string;
-    description: string;
-    value: number;
-  };
+  product: Product;
   closeModal: () => void;
   onAddToCart: (quantity: number) => void;
 }
@@ -29,14 +24,14 @@ function DetailsPage({ product, closeModal, onAddToCart }: DetailsPageProps) {
   };
 
   const registerNumberOfItems = () => {
-  if (count === 0) {
-    toast.warning("Select at least 1 item");
-    return;
-  }
+    if (count === 0) {
+      toast.warning("Select at least 1 item");
+      return;
+    }
 
-  onAddToCart(count);
-  toast.success("Added to cart!");
-  closeModal();
+    onAddToCart(count);
+    toast.success("Added to cart!");
+    closeModal();
   };
 
   return (

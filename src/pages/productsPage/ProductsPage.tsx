@@ -4,6 +4,16 @@ import cartIcon from "../../assets/cart-full.png";
 import DetailsPage from "../detailsPage/DetailsPage";
 import { useState } from "react";
 import CartButton from "../../components/cartButton/CartButton";
+import { useNavigate } from "react-router-dom";
+import type { CartItem } from "../../App";
+
+export type Product = {
+  id: number;
+  image: string;
+  name: string;
+  description: string;
+  value: number;
+};
 
 const products = [
   {
@@ -50,25 +60,27 @@ const products = [
   }
 ];
 
-function ProductsPage() {
-  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
-  const [cartItems, setCartItems] = useState<number>(
-    Number(localStorage.getItem("cart")) || 0
-  );
+interface ProductsPageProps {
+  cartProducts: CartItem[];
+  onAddToCart: (product: Product, quantity: number) => void;
+}
 
-  const handleAddToCart = (quantity: number) => {
-    setCartItems(prev => {
-      const total = prev + quantity;
-      localStorage.setItem("cart", total.toString());
-      return total;
-    });
-  };
+function ProductsPage({ cartProducts, onAddToCart }: ProductsPageProps) {
+  const navigate = useNavigate();
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  const totalItems = cartProducts.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  );
 
   return (
     <div className="container-card-product">
       <div className="header-cart-items">
-        <p> {cartItems ? cartItems : 0} {cartItems === 1 ? "item" : "items"} </p>
-        <CartButton/>
+        <p>
+          {totalItems} {totalItems === 1 ? "item" : "items"}
+        </p>
+        <CartButton onClick={() => navigate("/buy")}/>
       </div>
       <p className="header-product">Products</p>
 
@@ -89,7 +101,9 @@ function ProductsPage() {
         <DetailsPage
           product={selectedProduct}
           closeModal={() => setSelectedProduct(null)}
-          onAddToCart={handleAddToCart}
+          onAddToCart={(quantity) =>
+            onAddToCart(selectedProduct, quantity)
+          }
         />
       )}
     </div>

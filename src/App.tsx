@@ -1,0 +1,56 @@
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import BuyPage from "./pages/buyPage/BuyPage";
+import ProductsPage, { type Product } from "./pages/productsPage/ProductsPage";
+import { Slide, ToastContainer } from "react-toastify";
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
+};
+
+function App() {
+  const [cartProducts, setCartProducts] = useState<CartItem[]>([]);
+
+  const handleAddToCart = (product: Product, quantity: number) => {
+    setCartProducts(prev => {
+      const existingItem = prev.find(
+        item => item.product.id === product.id
+      );
+
+      if (existingItem) {
+        return prev.map(item =>
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
+      }
+
+      return [...prev, { product, quantity }];
+    });
+  };
+
+  return (
+    <>
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+        theme="dark"
+        transition={Slide}
+      />
+      <Routes>
+        <Route path="/" element={<ProductsPage cartProducts={cartProducts} onAddToCart={handleAddToCart} /> } />
+        <Route path="/buy" element={<BuyPage product={cartProducts} />} />
+      </Routes>
+    </>
+  );
+}
+
+export default App;

@@ -1,17 +1,29 @@
 import type { CartItem } from "../../App";
+import { Button } from "../../components/button/Button";
 import "./BuyPage.css";
 
 interface BuyPageProps {
   product: CartItem[];
+  onUpdateQuantity: (productId: number, quantity: number) => void;
 }
 
-function BuyPage({ product }: BuyPageProps) {
+function BuyPage({ product, onUpdateQuantity }: BuyPageProps) {
+  
+  const increment = (item: CartItem) => {
+    onUpdateQuantity(item.product.id, item.quantity + 1);
+  };
+
+  const decrement = (item: CartItem) => {
+    if (item.quantity > 0) {
+      onUpdateQuantity(item.product.id, item.quantity - 1);
+    }
+  };
+  
   return (
     <div className="container-buy-page">
-      <div className="product-info">
+      <div className="product-info" v-if={product.length === 0}>
         {product.map(item => (
           <div className="cart-item" key={item.product.id}>
-
             <div className="cart-item-info">
               <span className="cart-item-id">
                 {item.product.id}
@@ -24,11 +36,21 @@ function BuyPage({ product }: BuyPageProps) {
             </div>
 
             <div className="cart-item-quantity">
+              <Button onClick={() => decrement(item)} backgroundColor="transparent" color="#0D0502">-</Button>
               <span>{item.quantity}</span>
+              <Button onClick={() => increment(item)} backgroundColor="transparent" color="#0D0502">+</Button>
             </div>
-
           </div>
         ))}
+      </div>
+      <div className="resume">
+        <span className="text-resume">Resume</span>
+        <span className="value">US$ {product.reduce((total, item) => total + (item.product.value * item.quantity), 0)},00</span>
+      </div>
+      <div className="resume-actions">
+        <Button>See More Products</Button>
+        <Button>Place Order</Button>
+        <Button>Cancel Order</Button>
       </div>
     </div>
   );

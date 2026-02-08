@@ -10,14 +10,21 @@
 |____/ \__\___/|_|  \___|                                     
 ```
 
-This project is part of a challenge taken from
-[app-ideas by florinpop17](https://github.com/florinpop17/app-ideas).
+## About
 
-This project specifically uses TypeScript as the programming language, React as the framework and SWC as the compiler.
+This project is an interactive e-commerce platform focused on delivering a smooth and responsive shopping experience. It was developed based on the ["app-ideas" challenge by florinpop17](https://github.com/florinpop17/app-ideas), following the proposed User Stories to create a solid product listing and navigation system.
 
+## Design (UI/UX)
+Before writing any code, I prototyped the entire interface using Figma. This allowed me to ensure a clean and consistent layout across mobile and desktop devices.
+
+## Technologies Used
+React: Framework used for building a modular UI.
+TypeScript: Main language to ensure type safety and code reliability.
+SWC: High-performance compiler for a faster development workflow.
+CSS: Custom styling with a strong focus on responsiveness.
+
+## Project Setup 
 Below, you can find the project setup and hot-reload instructions for development.
-
-## Project Setup
 
 ```sh
 npm install

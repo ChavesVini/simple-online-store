@@ -11,7 +11,7 @@ interface CardProductProps {
 
 function CardProduct({ image, nameProduct, description, value, onSelect }: CardProductProps) {
   return (
-    <div className="card-product">
+    <div className="card-product" onClick={onSelect}>
       <img src={image} alt={nameProduct} className="product-image" />
       <p className="name-product"> {nameProduct}</p>
       <p className="description"> {description}</p>
@@ -24,7 +24,6 @@ function CardProduct({ image, nameProduct, description, value, onSelect }: CardP
       <Button 
         title="Select"
         backgroundColor="#0D0502"
-        onClick={onSelect}
       />
     </div>
   );

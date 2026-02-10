@@ -13,10 +13,5 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #ECF8D4;
   color: #0D0502;
-}
-
-.value {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 1vw;
+  cursor: pointer;
 }

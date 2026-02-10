@@ -25,6 +25,8 @@
   width: 100%;
   display: flex;
   gap: 1.1vw;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .header-cart-items {

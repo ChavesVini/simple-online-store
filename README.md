@@ -18,9 +18,9 @@ This project is an interactive e-commerce platform focused on delivering a smoot
 Before writing any code, I prototyped the entire interface using Figma. This allowed me to ensure a clean and consistent layout across mobile and desktop devices.
 
 ## Technologies Used
-React: Framework used for building a modular UI.
-TypeScript: Main language to ensure type safety and code reliability.
-SWC: High-performance compiler for a faster development workflow.
+React: Framework used for building a modular UI.<br>
+TypeScript: Main language to ensure type safety and code reliability.<br>
+SWC: High-performance compiler for a faster development workflow.<br>
 CSS: Custom styling with a strong focus on responsiveness.
 
 ## Project Setup 

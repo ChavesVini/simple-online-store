@@ -12,10 +12,10 @@
 
 ## About
 
-This project is an interactive e-commerce platform focused on delivering a smooth and responsive shopping experience. It was developed based on the ["app-ideas" challenge by florinpop17](https://github.com/florinpop17/app-ideas), following the proposed User Stories to create a solid product listing and navigation system.
+This project is an interactive online store platform focused on delivering a smooth and responsive experience. It was developed based on the ["app-ideas" challenge by florinpop17](https://github.com/florinpop17/app-ideas), following the proposed User Stories.
 
 ## Design (UI/UX)
-Before writing any code, I prototyped the entire interface using Figma. This allowed me to ensure a clean and consistent layout across mobile and desktop devices.
+Before writing any code, I prototyped the entire interface using Figma. This allowed me to ensure a clean and consistent layout across desktop devices.
 
 ## Technologies Used
 React: Framework used for building a modular UI.<br>

@@ -1,5 +1,5 @@
-import type { CartItem } from "../../App";
-import { Button } from "../../components/button/Button";
+import { Button } from "../../components/ui/button/Button";
+import type { CartItem } from "../../types/cartItem";
 import "./BuyPage.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
@@ -37,7 +37,7 @@ function BuyPage({ product, onUpdateQuantity }: BuyPageProps) {
 
   return (
     <div className="container-buy-page">
-      <div className="product-info" v-if={product.length === 0}>
+      <div className="product-info">
         {product.map(item => (
           <div className="cart-item" key={item.product.id}>
             <div className="cart-item-info">
@@ -60,13 +60,20 @@ function BuyPage({ product, onUpdateQuantity }: BuyPageProps) {
         ))}
       </div>
       <div className="resume">
-        <span className="text-resume">Resume</span>
-        <span className="value">US$ {totalValue},00</span>
-      </div>
-      <div className="resume-actions">
-        <Button onClick={() => navigate("/")}>See More Products</Button>
-        <Button onClick={() => placeOrder()}>Place Order</Button>
-        <Button onClick={() => cancelOrder()}>Cancel Order</Button>
+        <div className="resume-top">
+          <span className="text-resume">Resume</span>
+          <span className="resume-value">
+            {new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+            }).format(totalValue)}
+          </span>
+        </div>
+        <div className="resume-actions">
+          <Button onClick={() => navigate("/")} backgroundColor="#85685A">See More Products</Button>
+          <Button onClick={() => placeOrder()} backgroundColor="#85685A">Place Order</Button>
+          <Button onClick={() => cancelOrder()} backgroundColor="#85685A">Cancel Order</Button>
+        </div>
       </div>
     </div>
   );

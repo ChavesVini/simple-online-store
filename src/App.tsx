@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import BuyPage from "./pages/buyPage/BuyPage";
-import ProductsPage, { type Product } from "./pages/productsPage/ProductsPage";
+import ProductsPage from "./pages/productsPage/ProductsPage";
 import { Slide, ToastContainer } from "react-toastify";
-
-export interface CartItem {
-  product: Product;
-  quantity: number;
-};
+import type { CartItem } from "./types/cartItem";
+import type { Product } from "./types/product";
 
 function App() {
   const [cartProducts, setCartProducts] = useState<CartItem[]>([]);

@@ -5,15 +5,8 @@ import DetailsPage from "../detailsPage/DetailsPage";
 import { useState } from "react";
 import CartButton from "../../components/cartButton/CartButton";
 import { useNavigate } from "react-router-dom";
-import type { CartItem } from "../../App";
-
-export type Product = {
-  id: number;
-  image: string;
-  name: string;
-  description: string;
-  value: number;
-};
+import type { Product } from "../../types/product";
+import type { CartItem } from "../../types/cartItem";
 
 const products = [
   {

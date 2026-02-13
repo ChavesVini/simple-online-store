@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import BuyPage from "./pages/buyPage/BuyPage";
-import ProductsPage, { type Product } from "./pages/productsPage/ProductsPage";
+import ProductsPage from "./pages/productsPage/ProductsPage";
 import { Slide, ToastContainer } from "react-toastify";
-
-export interface CartItem {
-  product: Product;
-  quantity: number;
-};
+import type { CartItem } from "./types/cartItem";
+import type { Product } from "./types/product";
 
 function App() {
   const [cartProducts, setCartProducts] = useState<CartItem[]>([]);
@@ -29,6 +26,18 @@ function App() {
       return [...prev, { product, quantity }];
     });
   };
+  
+  const updateQuantity = (productId: number, quantity: number) => {
+    setCartProducts(prev =>
+      prev
+        .map(item =>
+          item.product.id === productId
+            ? { ...item, quantity }
+            : item
+        )
+        .filter(item => item.quantity > 0)
+    );
+  };
 
   return (
     <>
@@ -47,7 +56,7 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<ProductsPage cartProducts={cartProducts} onAddToCart={handleAddToCart} /> } />
-        <Route path="/buy" element={<BuyPage product={cartProducts} />} />
+        <Route path="/buy" element={<BuyPage product={cartProducts} onUpdateQuantity={updateQuantity}/>} />
       </Routes>
     </>
   );

@@ -1,17 +1,45 @@
-import type { CartItem } from "../../App";
+import { Button } from "../../components/ui/button/Button";
+import type { CartItem } from "../../types/cartItem";
 import "./BuyPage.css";
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 interface BuyPageProps {
   product: CartItem[];
+  onUpdateQuantity: (productId: number, quantity: number) => void;
 }
 
-function BuyPage({ product }: BuyPageProps) {
+function BuyPage({ product, onUpdateQuantity }: BuyPageProps) {  
+  const navigate = useNavigate();
+  
+  const increment = (item: CartItem) => {
+    onUpdateQuantity(item.product.id, item.quantity + 1);
+  };
+
+  const decrement = (item: CartItem) => {
+    if (item.quantity > 0) {
+      onUpdateQuantity(item.product.id, item.quantity - 1);
+    }
+  };
+
+  const placeOrder = () => {
+    toast.success("You ordered " + numberOfItems + " items, with a value of US$ " + totalValue + ",00");
+    product.forEach(item => onUpdateQuantity(item.product.id, 0));
+  }
+
+  const cancelOrder = () => {
+    product.forEach(item => onUpdateQuantity(item.product.id, 0));
+    navigate("/");
+  }
+
+  const numberOfItems = product.reduce((total, item) => total + item.quantity, 0);
+  const totalValue = product.reduce((total, item) => total + (item.product.value * item.quantity), 0);
+
   return (
     <div className="container-buy-page">
       <div className="product-info">
         {product.map(item => (
           <div className="cart-item" key={item.product.id}>
-
             <div className="cart-item-info">
               <span className="cart-item-id">
                 {item.product.id}
@@ -24,11 +52,28 @@ function BuyPage({ product }: BuyPageProps) {
             </div>
 
             <div className="cart-item-quantity">
+              <Button onClick={() => decrement(item)} backgroundColor="transparent" color="#0D0502">-</Button>
               <span>{item.quantity}</span>
+              <Button onClick={() => increment(item)} backgroundColor="transparent" color="#0D0502">+</Button>
             </div>
-
           </div>
         ))}
+      </div>
+      <div className="resume">
+        <div className="resume-top">
+          <span className="text-resume">Resume</span>
+          <span className="resume-value">
+            {new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+            }).format(totalValue)}
+          </span>
+        </div>
+        <div className="resume-actions">
+          <Button onClick={() => navigate("/")} backgroundColor="#85685A">See More Products</Button>
+          <Button onClick={() => placeOrder()} backgroundColor="#85685A">Place Order</Button>
+          <Button onClick={() => cancelOrder()} backgroundColor="#85685A">Cancel Order</Button>
+        </div>
       </div>
     </div>
   );

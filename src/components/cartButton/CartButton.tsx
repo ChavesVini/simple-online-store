@@ -1,4 +1,4 @@
-import { Button } from "../button/Button";
+import { Button } from "../ui/button/Button";
 import cartIcon from "../../assets/shopping-cart.png";
 import "./CartButton.css";
 

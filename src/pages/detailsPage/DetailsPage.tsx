@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Button } from "../../components/button/Button";
+import { Button } from "../../components/ui/button/Button";
 import "./DetailsPage.css";
 import { toast } from 'react-toastify';
-import type { Product } from "../productsPage/ProductsPage";
+import type { Product } from "../../types/product";
 
 interface DetailsPageProps {
   product: Product;
